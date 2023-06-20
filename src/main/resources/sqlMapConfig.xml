@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <!-- 全局setting配置 -->
+
+    <!-- 配置别名 -->
+    <typeAliases>
+        <typeAlias type="org.successor.domin.User" alias="User"/>
+        <typeAlias type="org.successor.domin.Book" alias="Book"/>
+        <typeAlias type="org.successor.domin.Avatar" alias="Avatar"/>
+        <typeAlias type="org.successor.domin.BookType" alias="BookType"/>
+        <typeAlias type="org.successor.domin.Contribution" alias="Contribution"/>
+        <typeAlias type="org.successor.domin.Upload" alias="Upload"/>
+        <typeAlias type="org.successor.domin.Feedback" alias="Feedback"/>
+    </typeAliases>
+
+</configuration>
