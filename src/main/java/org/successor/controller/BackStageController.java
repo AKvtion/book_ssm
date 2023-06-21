@@ -1,5 +1,6 @@
 package org.successor.controller;
 
+import cn.hutool.crypto.digest.DigestUtil;
 import io.swagger.annotations.Api;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -50,15 +51,15 @@ public class BackStageController {
      */
     @RequestMapping(value = "/backlogin")
     public String login(@RequestParam("username") String username,@RequestParam("password") String password, Model model, HttpSession session) {
-        System.out.println(username+password);
-        boolean isLogin = backStageService.getLogin(username, password);
+        String passwordMd5 = DigestUtil.md5Hex(password);
+        boolean isLogin = backStageService.getLogin(username, passwordMd5);
         if (isLogin) {
-            User user = backStageService.queryUser(username,password);
+            User user = backStageService.queryUser(username,passwordMd5);
             session.setAttribute("status", true);
             session.setAttribute("user",user);
             return "redirect:bookManage";
         } else {
-            model.addAttribute("error", "登陆失败，请重试！");
+            model.addAttribute("error", "用户名或密码错误，请重试！");
             return "backstage/adminLogin";
         }
     }

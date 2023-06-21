@@ -30,13 +30,16 @@ public class BackStageService {
     @Autowired
     private FeedbackDao feedbackDao;
 
-    public boolean getLogin(String username, String password) {
-        User user = userDao.queryByLogin(username, password);
-        return user.getUserCode().equals(username) && user.getUserPassword().equals(password);
+    public boolean getLogin(String username, String userPassword) {
+        User user = userDao.queryByLogin(username, userPassword);
+        if (user == null){
+            return false;
+        }
+        return user.getUserCode().equals(username) && user.getUserPassword().equals(userPassword);
     }
 
-    public User queryUser(String username, String password) {
-        return userDao.queryByLogin(username, password);
+    public User queryUser(String username, String userPassword) {
+        return userDao.queryByLogin(username, userPassword);
     }
 
     public List<doBookHelper> iteratorUploadList(List<Upload> uploadList) {

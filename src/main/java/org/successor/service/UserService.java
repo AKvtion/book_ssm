@@ -1,5 +1,6 @@
 package org.successor.service;
 
+import cn.hutool.crypto.digest.DigestUtil;
 import org.successor.dao.*;
 import org.successor.domin.*;
 import org.successor.helper.UploadHelper;
@@ -31,9 +32,7 @@ public class UserService {
     private BookDao bookDao;
 
     public User queryById(long id) {
-        User user;
-        user = userDao.queryById(id);
-        return user;
+        return userDao.queryById(id);
     }
 
     public UserHelper getLoginUser(String userCode, String userPassword) {
@@ -57,11 +56,11 @@ public class UserService {
     }
 
     public int checkUserCode(String userCode) {
-        int count = userDao.queryByUserCode(userCode);
-        return count;
+        return userDao.queryByUserCode(userCode);
     }
 
     public void addUser(User user) {
+        user.setUserPassword(DigestUtil.md5Hex(user.getUserPassword()));
         int avatarNum = new Random().nextInt(10) + 1;
         user.setAvatarNum(avatarNum);
         user.setContribution(0);
@@ -79,8 +78,7 @@ public class UserService {
     }
 
     public int getAvatarId(String avatar_img) {
-        int avatarId = avatarDao.queryByImgPath(avatar_img);
-        return avatarId;
+        return avatarDao.queryByImgPath(avatar_img);
     }
 
     public void updateUserPassword(long id, String password ) {
@@ -115,4 +113,7 @@ public class UserService {
         return uploadHelperList;
     }
 
+    public User queryByMail(String email) {
+        return userDao.queryByMail(email);
+    }
 }

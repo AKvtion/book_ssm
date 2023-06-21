@@ -69,7 +69,10 @@
                         </div>
                         <div class="checkbox col-md-6 col-md-offset-2">
                             <label><input type="checkbox">记住密码</label>
-                            <a href="#" class="btn btn-link">找回密码</a>
+<%--                            <a href="#" class="btn btn-link">找回密码</a>--%>
+                            <!--触发找回密码模态框-->
+                            <button type="button" class="btn btn-link" data-toggle="modal"
+                                    data-target="#regPasswordModel" data-dismiss="modal">找回密码</button>
                         </div>
                         <div class="form-group">
                             <div class="col-md-4 col-md-offset-2">
@@ -144,6 +147,43 @@
                             <div class="col-md-6 col-md-offset-2">
                                 <button id="regSubmit" type="button" class="btn btn-success">注册</button>
                                 <button id="regQuit" type="button" class="btn btn-info" data-dismiss="modal">取消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%--找回密码模态框--%>
+    <div id="regPasswordModel" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <div class="container">
+                        <span class="h3">找回密码</span>
+                        <!--触发登录模态框-->
+                        <button type="button" class="btn btn-link" data-toggle="modal"
+                                data-target="#loginModal" data-dismiss="modal">想起密码？</button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <form id="regFormEmail" class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="uCode" class="control-label col-md-2">邮箱</label>
+                            <div class="col-md-5">
+                                <input type="email" class="form-control" id="Email" name="Email"
+                                       placeholder="请输入邮箱">
+                            </div>
+                            <span id="uEmailTip" style="padding-top: 7px"></span>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-2">
+                                <button id="regEmailSubmit" type="submit" class="btn btn-success">提交</button>
                             </div>
                         </div>
                     </form>

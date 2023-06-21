@@ -4,64 +4,73 @@
 <mapper namespace="org.successor.dao.UserDao">
 
     <resultMap id="userMap" type="org.successor.domin.User">
-        <id column="id" property="id" />
-        <result column="userCode" property="userCode" />
-        <result column="userPassword" property="userPassword" />
-        <result column="userName" property="userName" />
-        <result column="email" property="email" />
-        <result column="avatarNum" property="avatarNum" />
-        <result column="contribution" property="contribution" />
-        <result column="creationDate" property="creationDate" />
+        <id column="id" property="id"/>
+        <result column="userCode" property="userCode"/>
+        <result column="userPassword" property="userPassword"/>
+        <result column="userName" property="userName"/>
+        <result column="email" property="email"/>
+        <result column="avatarNum" property="avatarNum"/>
+        <result column="contribution" property="contribution"/>
+        <result column="creationDate" property="creationDate"/>
     </resultMap>
-    
+
     <sql id="user_columns">
         id, userCode, userPassword, userName, email, avatarNum, contribution, creationDate
     </sql>
 
     <select id="queryById" parameterType="long" resultMap="userMap">
         SELECT
-        <include refid="user_columns" />
+        <include refid="user_columns"/>
         from user WHERE id=#{id}
     </select>
-    
+
+    <select id="queryByMail" resultType="org.successor.domin.User">
+        SELECT
+        <include refid="user_columns"/>
+        from user WHERE email  =#{email}
+    </select>
+
     <select id="queryByLogin" resultMap="userMap">
         SELECT
-        <include refid="user_columns" />
+        <include refid="user_columns"/>
         FROM user where
         userCode=#{userCode} and userPassword=#{userPassword}
     </select>
 
     <select id="queryByUserCode" parameterType="String" resultType="int">
-        SELECT count(*) FROM user WHERE userCode=#{userCode}
+        SELECT count(*)
+        FROM user
+        WHERE userCode = #{userCode}
     </select>
 
     <insert id="addUser" parameterType="User">
-        insert into
-        user(userCode,userPassword,userName,email,avatarNum,contribution,creationDate)
-        values(#{userCode}, #{userPassword}, #{userName}, #{email}, #{avatarNum}, #{contribution}, #{creationDate})
+        insert into user(userCode, userPassword, userName, email, avatarNum, contribution, creationDate)
+        values (#{userCode}, #{userPassword}, #{userName}, #{email}, #{avatarNum}, #{contribution}, #{creationDate})
     </insert>
 
     <update id="updateUserPassword">
-        update user SET
-        userPassword=#{userPassword}
-        WHERE id=#{id}
+        update user
+        SET userPassword=#{userPassword}
+        WHERE id = #{id}
     </update>
 
     <update id="updateUserContribution">
-        update user SET
-        contribution=contribution+#{addValue}
-        where id=#{id}
+        update user
+        SET contribution=contribution + #{addValue}
+        where id = #{id}
     </update>
 
     <update id="updateUserInfo" parameterType="User">
-        update user SET
-        userName=#{userName},email=#{email},avatarNum=#{avatarNum}
-        where id=#{id}
+        update user
+        SET userName=#{userName},
+            email=#{email},
+            avatarNum=#{avatarNum}
+        where id = #{id}
     </update>
 
     <select id="queryUserByContribution" resultMap="userMap">
         select
-        <include refid="user_columns" />
+        <include refid="user_columns"/>
         from user
         order by contribution desc
         limit 10
@@ -85,14 +94,17 @@
     </select>
 
     <delete id="deleteUser" parameterType="long">
-        delete from user where id=#{id}
+        delete
+        from user
+        where id = #{id}
     </delete>
 
     <select id="queryUserByUserName" parameterType="String" resultMap="userMap">
         select
-        <include refid="user_columns" />
+        <include refid="user_columns"/>
         from user where userName like concat('%',#{userName},'%')
         order by contribution desc
     </select>
+
 
 </mapper>

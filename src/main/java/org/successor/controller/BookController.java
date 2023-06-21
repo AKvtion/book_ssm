@@ -72,15 +72,13 @@ public class BookController {
 
     @RequestMapping(value = "/bookDetail")
     public String bookDetail(long bookID, Model model) {
-        Book book;
-        book = bookService.getBookDetail(bookID);
-        Upload upload;
-        upload = bookService.getUploadInfo(bookID);
+        System.out.println("bookId"+bookID);
+        Book book = bookService.getBookDetail(bookID);
+        Upload upload = bookService.getUploadInfo(bookID);
         Date uploadedDate = upload.getUploadedDate();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String uploadDate = dateFormat.format(uploadedDate);
-        User user;
-        user = userService.queryById(upload.getUploader());
+        User user = userService.queryById(upload.getUploader());
         model.addAttribute("book",book);
         model.addAttribute("uploadedDate",uploadDate);
         model.addAttribute("uploader",user.getUserName());

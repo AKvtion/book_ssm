@@ -18,12 +18,15 @@ public interface UserDao {
      */
     User queryById(long id);
 
+    // 通过邮箱查找用户
+    User queryByMail(String email);
+
     /**
      * 通过用户名和密码查询用户信息
      *
      * @param userCode
-     * @param userPassword
-     * @return
+     * @param passwordMd5
+     * @return User
      */
     User queryByLogin(@Param("userCode") String userCode,
                              @Param("userPassword") String userPassword);
@@ -32,7 +35,7 @@ public interface UserDao {
      * 查询用户名是否存在
      *
      * @param userCode
-     * @return
+     * @return int
      */
     int queryByUserCode(String userCode);
 
