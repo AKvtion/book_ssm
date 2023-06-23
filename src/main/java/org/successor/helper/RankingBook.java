@@ -1,8 +1,6 @@
 package org.successor.helper;
 
-/**
- * Created by ZhangZijian on 2017/4/22.
- */
+
 public class RankingBook {
     private long id;
     private String bookName;

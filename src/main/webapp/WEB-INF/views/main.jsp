@@ -118,6 +118,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/userLogin.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/userRegister.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/userResPassword.js"></script>
 </body>
 </html>
 

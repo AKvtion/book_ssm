@@ -2,9 +2,7 @@ package org.successor.helper;
 
 import java.io.Serializable;
 
-/**
- * Created by ZhangZijian on 2017/4/23.
- */
+
 public class PageHelper implements Serializable {
     private int pageSize = 12;   //每页显示的书本数量
     private int currentPage = 1;        //当前页码数(从url中获取到)

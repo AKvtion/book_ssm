@@ -1,6 +1,8 @@
 $(document).ready(function () {
     function e(e) {
-        $("#loginHead").addClass("hide"), $("#userHead").removeClass("hide"), $("#navbar #loginedInfo a").popover({
+        $("#loginHead").addClass("hide"),
+            $("#userHead").removeClass("hide"),
+            $("#navbar #loginedInfo a").popover({
             placement: "bottom",
             html: !0,
             title: '<div class="h5 text-center"><span id="userName" class="glyphicon glyphicon-user"></span></div>',
@@ -121,6 +123,8 @@ $(document).ready(function () {
         };
         s(c)
     } else o();
+
+
     $(".uploadBtn button").on({
         click: function () {
             "true" == $.cookie("isLogined") && window.open("getUploadPage")

@@ -57,11 +57,11 @@ public class LoginController {
      *  找回密码
      *      输入邮箱号
      *      邮箱接收
-     *
-     *
      */
-    @RequestMapping(value = "/reMail")
-    public void findpassword(@RequestParam("email") String email, Model model, HttpSession session){
+    @RequestMapping(value = "/reMail", method = RequestMethod.POST)
+    @ResponseBody
+    public void findpassword(@RequestParam("email") String email, Model model, HttpSession session) {
+        logger.info("email wait!");
         //通过邮箱查询是否有这个用户存在
         User user = userService.queryByMail(email);
         //如果有进行下一步
@@ -85,7 +85,7 @@ public class LoginController {
     //密码重置模块
     @RequestMapping(value = "/resetPassword")
     public String resetPassword(){
-
+        //待开发中
         //密码修改成功后 跳转到登录页面
         return "login";
     }

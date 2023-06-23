@@ -171,11 +171,11 @@
                     </div>
                 </div>
                 <div class="modal-body">
-                    <form id="regFormEmail" class="form-horizontal" role="form">
+                    <form id="regFormEmail" class="form-horizontal" role="form" method="get" action="reMail">
                         <div class="form-group">
                             <label for="uCode" class="control-label col-md-2">邮箱</label>
                             <div class="col-md-5">
-                                <input type="email" class="form-control" id="Email" name="Email"
+                                <input type="text" class="form-control" id="email" name="email"
                                        placeholder="请输入邮箱">
                             </div>
                             <span id="uEmailTip" style="padding-top: 7px"></span>
@@ -183,7 +183,7 @@
                         <br>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-2">
-                                <button id="regEmailSubmit" type="submit" class="btn btn-success">提交</button>
+                                <button id="regEmailSubmit" type="button" class="btn btn-success">提交</button>
                             </div>
                         </div>
                     </form>

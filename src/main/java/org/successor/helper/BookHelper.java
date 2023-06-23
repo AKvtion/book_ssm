@@ -2,9 +2,7 @@ package org.successor.helper;
 
 import org.springframework.web.multipart.MultipartFile;
 
-/**
- * Created by ZhangZijian on 2017/4/18.
- */
+
 public class BookHelper {
     private long id;
     private String title;

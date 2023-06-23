@@ -5,9 +5,7 @@ import org.successor.domin.Contribution;
 
 import java.util.Date;
 
-/**
- * Created by ZhangZijian on 2017/4/13.
- */
+
 public class UserHelper {
     private long id;
     private String userCode;
